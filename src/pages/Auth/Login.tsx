@@ -12,11 +12,13 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
-import {styled} from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import ForgotPassword from './ForgotPassword';
-import {FacebookIcon, GoogleIcon, SitemarkIcon} from './CustomIcons';;
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import AppTheme from "../../theme/AppTheme";
+import ColorModeSelect from "../../theme/ColorModeSelect";
 
-const Card = styled(MuiCard)(({theme}) => ({
+const Card = styled(MuiCard)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignSelf: 'center',
@@ -35,7 +37,7 @@ const Card = styled(MuiCard)(({theme}) => ({
     }),
 }));
 
-const SignInContainer = styled(Stack)(({theme}) => ({
+const SignInContainer = styled(Stack)(({ theme }) => ({
     height: 'calc((1 - var(--template-frame-height, 0)) * 100dvh)',
     minHeight: '100%',
     padding: theme.spacing(2),
@@ -58,7 +60,7 @@ const SignInContainer = styled(Stack)(({theme}) => ({
     },
 }));
 
-export default function SignIn(props: { disableCustomTheme?: boolean }) {
+const LoginPage = (props: { disableCustomTheme?: boolean }) => {
     const [emailError, setEmailError] = React.useState(false);
     const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
     const [passwordError, setPasswordError] = React.useState(false);
@@ -114,15 +116,15 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 
     return (
         <AppTheme {...props}>
-            <CssBaseline enableColorScheme/>
+            <CssBaseline enableColorScheme />
             <SignInContainer direction="column" justifyContent="space-between">
-                <ColorModeSelect sx={{position: 'fixed', top: '1rem', right: '1rem'}}/>
+                <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
                 <Card variant="outlined">
-                    <SitemarkIcon/>
+                    <SitemarkIcon />
                     <Typography
                         component="h1"
                         variant="h4"
-                        sx={{width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)'}}
+                        sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
                     >
                         Sign in
                     </Typography>
@@ -172,10 +174,10 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                             />
                         </FormControl>
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary"/>}
+                            control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
-                        <ForgotPassword open={open} handleClose={handleClose}/>
+                        <ForgotPassword open={open} handleClose={handleClose} />
                         <Button
                             type="submit"
                             fullWidth
@@ -189,18 +191,18 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                             type="button"
                             onClick={handleClickOpen}
                             variant="body2"
-                            sx={{alignSelf: 'center'}}
+                            sx={{ alignSelf: 'center' }}
                         >
                             Forgot your password?
                         </Link>
                     </Box>
                     <Divider>or</Divider>
-                    <Box sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                         <Button
                             fullWidth
                             variant="outlined"
                             onClick={() => alert('Sign in with Google')}
-                            startIcon={<GoogleIcon/>}
+                            startIcon={<GoogleIcon />}
                         >
                             Sign in with Google
                         </Button>
@@ -208,16 +210,16 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
                             fullWidth
                             variant="outlined"
                             onClick={() => alert('Sign in with Facebook')}
-                            startIcon={<FacebookIcon/>}
+                            startIcon={<FacebookIcon />}
                         >
                             Sign in with Facebook
                         </Button>
-                        <Typography sx={{textAlign: 'center'}}>
+                        <Typography sx={{ textAlign: 'center' }}>
                             Don&apos;t have an account?{' '}
                             <Link
                                 href="/material-ui/getting-started/templates/sign-in/"
                                 variant="body2"
-                                sx={{alignSelf: 'center'}}
+                                sx={{ alignSelf: 'center' }}
                             >
                                 Sign up
                             </Link>
@@ -227,4 +229,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             </SignInContainer>
         </AppTheme>
     );
-}
+};
+
+export default LoginPage;

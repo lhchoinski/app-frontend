@@ -1,18 +1,15 @@
 import React from 'react';
-import { getMainMenu } from '@CoreServices/SessionService';
-import { findCurrentMenuPath } from '@CoreHelpers/MenuHelper';
-import Error401 from '@Core/pages/Errors/Error401';
 import { IPrivateRouteProps } from './interfaces';
+import Error401 from "../../../pages/Errors/Error401";
 
 const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children }) => {
-    const menu = getMainMenu();
-    const currentMenuPath = findCurrentMenuPath(menu, location.pathname);
 
-    if (currentMenuPath) {
-        return children;
+    if(!!localStorage.getItem('authToken')) {
+        return <React.Fragment>{children}</React.Fragment>;
     }
 
     return <Error401 />;
 };
+
 
 export default PrivateRoute;

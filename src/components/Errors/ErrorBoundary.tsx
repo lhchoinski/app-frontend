@@ -1,7 +1,7 @@
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
-import Error404 from '@CorePages/Errors/Error404';
-import Error500 from '@CorePages/Errors/Error500';
 import React from 'react';
+import Error404 from "../../pages/Errors/Error404";
+import Error500 from "../../pages/Errors/Error500";
 
 const ErrorBoundary: React.FC = () => {
     const error = useRouteError();

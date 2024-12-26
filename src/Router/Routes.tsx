@@ -1,13 +1,22 @@
-import React from "react";
-import SignIn from "../pages/Auth/SignIn";
+import React, {lazy} from "react";
 
-const AppRoutes = [
+const LoginPage = lazy(() => import('../pages/Auth/Login'));
+const Home = lazy(() => import('../pages/Home'));
+
+const Routes = [
     // Login
     {
-        path: '/auth/login',
-        element: <SignIn />,
+        path: '/login',
+        element: <LoginPage />,
         layout: 'blank',
+    },
+
+    // Home
+    {
+        path: '/',
+        element: <Home />,
+        layout: 'default',
     },
 ];
 
-export { AppRoutes };
+export { Routes };

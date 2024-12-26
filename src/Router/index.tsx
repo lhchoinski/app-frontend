@@ -1,10 +1,11 @@
-import {createBrowserRouter} from 'react-router-dom';
-import {AppRoutes} from "./Routes";
+import React from 'react';
+import {Routes} from "./Routes";
 import BlankLayout from "../components/Layouts/BlankLayout";
-import DefaultLayout from "../components/Layouts/DefaultLayout";
 import ErrorBoundary from "../components/Errors/ErrorBoundary";
+import DefaultLayout from "../components/Layouts/DefaultLayout";
+import {createBrowserRouter} from "react-router-dom";
 
-const finalRoutes = [...AppRoutes].map(route => {
+const finalRoutes = [...Routes].map(route => {
     return {
         ...route,
         element:
@@ -33,3 +34,23 @@ const router = createBrowserRouter(finalRoutes, {
 });
 
 export default router;
+
+// const AppRoutes = () => {
+//     return (
+//         <Routes>
+//             {/* Rotas Públicas */}
+//             <Route
+//                 path="/login"
+//                 element={<LoginPage/>}
+//             />
+//
+//             {/* Rotas Privadas */}
+//             <Route
+//                 path="/"
+//                 element={<PrivateRoute><Home/></PrivateRoute>}
+//             />
+//         </Routes>
+//     );
+// };
+
+// export default AppRoutes;
